@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+  <body>
+    <div id="content">
+      <h1>Search Results</h1>
+      {% if results %}
+        <table>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Log String</th>
+              <th>Timestamp</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for result in results %}
+              <tr>
+                <td>{{ result.level }}</td>
+                <td>{{ result.log_string }}</td>
+                <td>{{ result.timestamp }}</td>
+                <td>{{ result.metadata.source }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No results found.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
